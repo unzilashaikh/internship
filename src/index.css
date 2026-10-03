@@ -49,6 +49,17 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  position: relative;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-main);
+  cursor: pointer;
+  z-index: 100;
 }
 
 .logo {
@@ -537,8 +548,30 @@ footer {
   .about-grid {
     grid-template-columns: 1fr;
   }
+  .mobile-menu-btn {
+    display: block;
+  }
   .nav-links {
-    display: none; /* In a real app, we'd add a hamburger menu */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.4s ease-in-out;
+    visibility: hidden;
+  }
+  .nav-links.open {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    visibility: visible;
+  }
+  .nav-links li {
+    margin: 15px 0;
   }
 }
 

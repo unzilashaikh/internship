@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import profileImg from './assets/unzila.png';
 import signatureImg from './assets/signature.png';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // Animation variants for reusability
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -28,13 +30,18 @@ function App() {
                 <img src={signatureImg} alt="Unzila Sheikh" className="signature-logo" />
               </a>
             </div>
-            <ul className="nav-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+            
+            <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? '✕' : '☰'}
+            </button>
+
+            <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+              <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
+              <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
+              <li><a href="#services" onClick={() => setIsMenuOpen(false)}>Services</a></li>
+              <li><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
+              <li><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
+              <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
             </ul>
           </nav>
         </div>
